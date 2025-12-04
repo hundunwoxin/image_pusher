@@ -126,7 +126,7 @@ jobs:
                 echo "正在构建Docker镜像 (使用 docker/Dockerfile)..."
                 
                 # 使用 -f 指定Dockerfile路径，并构建一个名为 jupyterq 的镜像
-                if docker build -t jupyterq -f docker/Dockerfile .; then
+                if docker build -t jupyterq:latest -f docker/Dockerfile .; then
                     echo "✅ 镜像构建成功: jupyterq"
                     # 可选：如果你需要将其重命名为与原始列表一致的名字
                     # docker tag jupyterq $line
