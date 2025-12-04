@@ -1,1 +1,1 @@
-kssys/jupyterq
+kxsys/jupyterq
