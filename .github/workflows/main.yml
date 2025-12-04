@@ -105,7 +105,38 @@ jobs:
             if echo "$line" | grep -q '^\s*#'; then
                 continue
             fi
-        
+            if echo "$line" | grep -q '^kxsys/jupyterq'; then
+                echo "检测到特殊镜像 kxsys/jupyterq，开始从源码构建..."
+                
+                # 清理可能存在的旧目录，避免克隆失败
+                if [[ -d "jupyterq" ]]; then
+                    echo "检测到已存在的 jupyterq 目录，正在清理..."
+                    rm -rf jupyterq
+                fi
+                
+                # 1. 克隆源代码
+                echo "正在克隆源代码..."
+                if ! git clone https://github.com/KxSystems/jupyterq.git; then
+                    echo "❌ 代码克隆失败，跳过此镜像"
+                    continue
+                fi
+                
+                # 2. 进入目录并构建Docker镜像
+                cd jupyterq
+                echo "正在构建Docker镜像 (使用 docker/Dockerfile)..."
+                
+                # 使用 -f 指定Dockerfile路径，并构建一个名为 jupyterq 的镜像
+                if docker build -t jupyterq -f docker/Dockerfile .; then
+                    echo "✅ 镜像构建成功: jupyterq"
+                    # 可选：如果你需要将其重命名为与原始列表一致的名字
+                    # docker tag jupyterq $line
+                    # echo "✅ 已重新标记为: $line"
+                else
+                    echo "❌ 镜像构建失败"
+                fi
+                
+                # 返回上级目录，以便处理下一个镜像
+                cd ..
             echo "docker pull $line"
             docker pull $line
             platform=$(echo "$line" | awk -F'--platform[ =]' '{if (NF>1) print $2}' | awk '{print $1}')
