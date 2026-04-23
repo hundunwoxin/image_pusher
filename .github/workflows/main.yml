@@ -15,10 +15,10 @@ jobs:
           sudo apt-get clean
           df -h
       - name: 拉取官方镜像
-        run: docker pull frappe/erpnext:v15-debian
+        run: docker pull frappe/erpnext:latest
 
       - name: 导出为 tar 镜像文件
-        run: docker save frappe/erpnext:v15-debian  | gzip > erpnext.tar.gz
+        run: docker save frappe/erpnext:latest  | gzip > erpnext.tar.gz
 
       - name: 上传为可下载产物
         uses: actions/upload-artifact@v4
