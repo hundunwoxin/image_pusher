@@ -15,16 +15,16 @@ jobs:
           sudo apt-get clean
           df -h
       - name: 拉取官方镜像
-        run: docker pull mariadb:10.6 
+        run: docker pull redis:alpine
 
       - name: 导出为 tar 镜像文件
-        run: docker save mariadb:10.6  | gzip > mariadb.tar.gz
+        run: docker save redis:alpine  | gzip > redis.tar.gz
 
       - name: 上传为可下载产物
         uses: actions/upload-artifact@v4
         with:
-          name: mariadb
-          path: mariadb.tar.gz
+          name: redis
+          path: redis.tar.gz
 
       - name: 生成直接下载链接
         run: |
