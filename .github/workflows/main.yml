@@ -15,16 +15,16 @@ jobs:
           sudo apt-get clean
           df -h
       - name: 拉取官方镜像
-        run: docker pull frappe/erpnext:v15
+        run: docker pull mariadb:10.6 
 
       - name: 导出为 tar 镜像文件
-        run: docker save frappe/erpnext:v15 | gzip > erpnext.tar.gz
+        run: docker save mariadb:10.6  | gzip > mariadb.tar.gz
 
       - name: 上传为可下载产物
         uses: actions/upload-artifact@v4
         with:
-          name: erpnext
-          path: erpnext.tar.gz
+          name: mariadb
+          path: mariadb.tar.gz
 
       - name: 生成直接下载链接
         run: |
