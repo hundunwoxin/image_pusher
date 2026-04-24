@@ -15,16 +15,16 @@ jobs:
           sudo apt-get clean
           df -h
       - name: 拉取官方镜像
-        run: docker pull odoo:18.0
+        run: docker pull postgres:14
 
       - name: 导出为 tar 镜像文件
-        run: docker save odoo:18.0  | gzip > odoo.tar.gz
+        run: docker save postgres:14  | gzip > postgres.tar.gz
 
       - name: 上传为可下载产物
         uses: actions/upload-artifact@v4
         with:
-          name: odoo
-          path: odoo.tar.gz
+          name: postgres
+          path: postgres.tar.gz
 
       - name: 生成直接下载链接
         run: |
