@@ -15,16 +15,16 @@ jobs:
           sudo apt-get clean
           df -h
       - name: 拉取官方镜像
-        run: docker pull akaunting/akaunting:latest
+        run: docker pull odoo:18.0
 
       - name: 导出为 tar 镜像文件
-        run: docker save akaunting/akaunting:latest  | gzip > akaunting.tar.gz
+        run: docker save odoo:18.0  | gzip > odoo.tar.gz
 
       - name: 上传为可下载产物
         uses: actions/upload-artifact@v4
         with:
-          name: akaunting
-          path: akaunting.tar.gz
+          name: odoo
+          path: odoo.tar.gz
 
       - name: 生成直接下载链接
         run: |
