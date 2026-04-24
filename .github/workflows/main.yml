@@ -15,16 +15,16 @@ jobs:
           sudo apt-get clean
           df -h
       - name: 拉取官方镜像
-        run: docker pull frappe/erpnext:v15.20.1
+        run: docker pull akaunting/akaunting:latest
 
       - name: 导出为 tar 镜像文件
-        run: docker save frappe/erpnext:v15.20.1  | gzip > erpnext.tar.gz
+        run: docker save akaunting/akaunting:latest  | gzip > akaunting.tar.gz
 
       - name: 上传为可下载产物
         uses: actions/upload-artifact@v4
         with:
-          name: erpnext
-          path: erpnext.tar.gz
+          name: akaunting
+          path: akaunting.tar.gz
 
       - name: 生成直接下载链接
         run: |
