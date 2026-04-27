@@ -15,16 +15,16 @@ jobs:
           sudo apt-get clean
           df -h
       - name: 拉取官方镜像
-        run: docker pull ludusrusso/erpnext-hrms:v15
+        run: docker pull mayuanworld/jupyter-ai:latest
 
       - name: 导出为 tar 镜像文件
-        run: docker save ludusrusso/erpnext-hrms:v15 | gzip > erpnext.tar.gz
+        run: docker save mayuanworld/jupyter-ai:latest | gzip > jupyterai.tar.gz
 
       - name: 上传为可下载产物
         uses: actions/upload-artifact@v4
         with:
-          name: erpnext
-          path: erpnext.tar.gz
+          name: jupyterai
+          path: jupyterai.tar.gz
 
       - name: 生成直接下载链接
         run: |
