@@ -1,4 +1,4 @@
-name: jupyterai
+name: jupyterlabai
 
 on:
   workflow_dispatch:
