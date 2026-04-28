@@ -54,7 +54,9 @@ pip install \
     jupyter-ai-magics>=2.0.0 \
     ipykernel>=6.0.0 \
     ipywidgets>=8.0.0 \
-    nb_conda_kernels>=2.3.0
+
+# 新增这一行，用 conda 安装 nb_conda_kernels
+conda install -n ${CONDA_ENV_NAME} -c conda-forge nb_conda_kernels=2.3.1 -y
 
 # 数据科学基础库
 pip install \
