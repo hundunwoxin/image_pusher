@@ -48,14 +48,13 @@ else
 fi
 
 # 安装 Jupyter AI 扩展（必需）
-conda install -n ai_env -c conda-forge nb_conda_kernels -y
-
 # Jupyter 核心包
 pip install \
     jupyter-ai>=2.0.0 \
     jupyter-ai-magics>=2.0.0 \
     ipykernel>=6.0.0 \
     ipywidgets>=8.0.0 \
+    nb_conda_kernels>=2.3.0
 
 # 数据科学基础库
 pip install \
@@ -71,6 +70,7 @@ pip install \
 pip install \
     torch>=2.0.0 \
     torchvision>=0.15.0 \
+    protobuf>=6.31.1,<8.0.0\
     tensorflow>=2.15.0
 
 # LangChain 生态系统
@@ -80,6 +80,7 @@ pip install \
     langchain-community>=0.3.0 \
     langchain-openai>=0.2.0 \
     langchain-anthropic>=0.2.0 \
+    google-ai-generativelanguage>=0.7,<1\
     langchain-google-genai>=2.0.0 \
     langchain-ollama>=0.2.0
 
@@ -281,8 +282,8 @@ echo "Ollama 服务器: ${OLLAMA_BASE_URL}"
 echo "默认模型: ${OLLAMA_DEFAULT_MODEL}"
 echo "=========================================="
 
-# 使用 base 环境的 jupyter-lab 命令（预装版本）
-exec /opt/conda/bin/jupyter-lab \
+# 后台启动base环境 JupyterLab (不阻塞构建流程)
+/opt/conda/bin/jupyter-lab \
     --allow-root \
     --ip='0.0.0.0' \
     --port=8881 \
@@ -290,7 +291,10 @@ exec /opt/conda/bin/jupyter-lab \
     --token='' \
     --ServerApp.disable_check_xsrf=True \
     --ServerApp.allow_origin='*' \
-    --ServerApp.root_dir='/home/jovyan'
+    --ServerApp.root_dir='/home/jovyan' &
+
+# 等待服务启动完成
+sleep 15
 EOF
 
 chmod +x /home/jovyan/start_jupyter_ai.sh
@@ -361,16 +365,22 @@ fi
 echo ""
 echo "🎯 启动 JupyterLab..."
 
-# 启动 JupyterLab
-exec jupyter-lab \
-    --allow-root \
-    --ip='0.0.0.0' \
-    --port=8881 \
-    --no-browser \
-    --token='' \
-    --ServerApp.disable_check_xsrf=True \
-    --ServerApp.allow_origin='*' \
-    --ServerApp.root_dir='/home/jovyan'
+# 后台启动 JupyterLab
+jupyter-lab \
+  --allow-root \
+  --ip=0.0.0.0 \
+  --port=8881 \
+  --no-browser \
+  --token='' \
+  --ServerApp.disable_check_xsrf=True \
+  --ServerApp.allow_origin='*' \
+  --ServerApp.root_dir='/home/jovyan' &
+
+# 等待几秒让服务初始化
+sleep 10
+
+# 后续构建步骤（比如保存镜像、上传等）
+echo "✅ JupyterLab 已后台启动，继续构建流程..."
 EOF
 
 chmod +x /home/jovyan/start_jupyter_ai.sh
