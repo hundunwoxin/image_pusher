@@ -56,6 +56,7 @@ pip install \
     ipywidgets>=8.0.0 \
 
 # 新增这一行，用 conda 安装 nb_conda_kernels
+pip install --upgrade setuptools
 conda install -n ${CONDA_ENV_NAME} -c conda-forge nb_conda_kernels=2.3.1 -y
 
 # 数据科学基础库
