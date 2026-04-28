@@ -48,13 +48,14 @@ else
 fi
 
 # 安装 Jupyter AI 扩展（必需）
+conda install -n ai_env -c conda-forge nb_conda_kernels -y
+
 # Jupyter 核心包
 pip install \
     jupyter-ai>=2.0.0 \
     jupyter-ai-magics>=2.0.0 \
     ipykernel>=6.0.0 \
     ipywidgets>=8.0.0 \
-    nb_conda_kernels>=2.3.0
 
 # 数据科学基础库
 pip install \
