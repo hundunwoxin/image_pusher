@@ -29,7 +29,7 @@ conda activate ${CONDA_ENV_NAME}
 
 # 升级 pip
 pip install --upgrade pip setuptools wheel
-pip install --force-reinstall setuptools==69.0.2
+
 
 # ============================================
 # 安装 Python 包（持久化在镜像中）
@@ -57,7 +57,7 @@ pip install \
     ipywidgets>=8.0.0 \
 
 # 新增这一行，用 conda 安装 nb_conda_kernels
-pip install --upgrade setuptools
+pip install --force-reinstall setuptools==69.0.2
 conda install -n ${CONDA_ENV_NAME} -c conda-forge nb_conda_kernels=2.3.1 -y
 
 # 数据科学基础库
