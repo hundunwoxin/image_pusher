@@ -31,7 +31,7 @@ WORKDIR /home/jovyan
 
 # 复制安装脚本
 COPY install_persist.sh /tmp/install_persist.sh
-RUN bash /tmp/install_persist.sh && rm /tmp/install_persist.sh
+RUN bash /tmp/install_persist.sh 
 
 # 暴露端口
 EXPOSE 8881
