@@ -73,7 +73,7 @@ pip install \
 # 深度学习框架（CPU 版本，如需 GPU 可更换）
 pip install --force-reinstall protobuf==7.34.0
 pip install  torch>=2.0.0   torchvision>=0.15.0    tensorflow>=2.15.0
-
+pip install --force-reinstall protobuf==7.34.0
 # LangChain 生态系统
 pip install --force-reinstall  google-ai-generativelanguage==0.7.0 
 pip install \
@@ -84,6 +84,7 @@ pip install \
     langchain-anthropic>=0.2.0 \
     langchain-google-genai>=2.0.0 \
     langchain-ollama>=0.2.0
+pip install --force-reinstall  google-ai-generativelanguage==0.7.0 
 # AI 模型工具
 pip install \
     transformers>=4.30.0 \
