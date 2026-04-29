@@ -299,7 +299,7 @@ echo "=========================================="
 
 # 等待服务启动完成
 sleep 15
-EOF
+
 
 chmod +x /home/jovyan/start_jupyter_ai.sh
 
@@ -385,7 +385,7 @@ sleep 10
 
 # 后续构建步骤（比如保存镜像、上传等）
 echo "✅ JupyterLab 已后台启动，继续构建流程..."
-EOF
+
 
 chmod +x /home/jovyan/start_jupyter_ai.sh
 
