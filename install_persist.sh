@@ -281,20 +281,6 @@ echo "JupyterLab: http://localhost:8881"
 echo "Ollama 服务器: ${OLLAMA_BASE_URL}"
 echo "默认模型: ${OLLAMA_DEFAULT_MODEL}"
 echo "=========================================="
-
-# 后台启动base环境 JupyterLab (不阻塞构建流程)
-/opt/conda/bin/jupyter-lab \
-    --allow-root \
-    --ip='0.0.0.0' \
-    --port=8881 \
-    --no-browser \
-    --token='' \
-    --ServerApp.disable_check_xsrf=True \
-    --ServerApp.allow_origin='*' \
-    --ServerApp.root_dir='/home/jovyan' &
-
-# 等待服务启动完成
-sleep 15
 EOF
 
 chmod +x /home/jovyan/start_jupyter_ai.sh
@@ -365,19 +351,7 @@ fi
 echo ""
 echo "🎯 启动 JupyterLab..."
 
-# 后台启动 JupyterLab
-jupyter-lab \
-  --allow-root \
-  --ip=0.0.0.0 \
-  --port=8881 \
-  --no-browser \
-  --token='' \
-  --ServerApp.disable_check_xsrf=True \
-  --ServerApp.allow_origin='*' \
-  --ServerApp.root_dir='/home/jovyan' &
 
-# 等待几秒让服务初始化
-sleep 10
 
 # 后续构建步骤（比如保存镜像、上传等）
 echo "✅ JupyterLab 已后台启动，继续构建流程..."
