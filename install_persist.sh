@@ -29,7 +29,8 @@ conda activate ${CONDA_ENV_NAME}
 
 # 升级 pip
 pip install --upgrade pip setuptools wheel
-pip install setuptools==65.7.0
+pip install --force-reinstall setuptools==69.0.2
+
 # ============================================
 # 安装 Python 包（持久化在镜像中）
 # ============================================
