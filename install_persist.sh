@@ -71,11 +71,7 @@ pip install \
     xgboost>=2.0.0
 
 # 深度学习框架（CPU 版本，如需 GPU 可更换）
-pip install \
-    torch>=2.0.0 \
-    torchvision>=0.15.0 \
-    protobuf>=6.31.1,<8.0.0 \
-    tensorflow>=2.15.0
+pip install  torch>=2.0.0   torchvision>=0.15.0  protobuf>=6.31.1,<8.0.0  tensorflow>=2.15.0
 
 # LangChain 生态系统
 pip install \
