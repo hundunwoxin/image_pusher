@@ -80,7 +80,7 @@ pip install \
     langchain-community>=0.3.0 \
     langchain-openai>=0.2.0 \
     langchain-anthropic>=0.2.0 \
-    google-ai-generativelanguage==0.7.2 \
+    google-ai-generativelanguage==0.7.0 \
     langchain-google-genai>=2.0.0 \
     langchain-ollama>=0.2.0
 
