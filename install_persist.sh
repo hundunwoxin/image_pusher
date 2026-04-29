@@ -71,7 +71,7 @@ pip install \
     xgboost>=2.0.0
 
 # 深度学习框架（CPU 版本，如需 GPU 可更换）
-pip install  torch>=2.0.0   torchvision>=0.15.0  "protobuf>=6.31.1,<8.0.0"  tensorflow>=2.15.0
+pip install  torch>=2.0.0   torchvision>=0.15.0  protobuf==7.25.3  tensorflow>=2.15.0
 
 # LangChain 生态系统
 pip install \
@@ -80,7 +80,7 @@ pip install \
     langchain-community>=0.3.0 \
     langchain-openai>=0.2.0 \
     langchain-anthropic>=0.2.0 \
-    "google-ai-generativelanguage>=0.7,<1" \
+    google-ai-generativelanguage==0.7.2 \
     langchain-google-genai>=2.0.0 \
     langchain-ollama>=0.2.0
 
