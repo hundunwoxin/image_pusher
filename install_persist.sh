@@ -54,7 +54,7 @@ pip install \
     jupyter-ai>=2.0.0 \
     jupyter-ai-magics>=2.0.0 \
     ipykernel>=6.0.0 \
-    ipywidgets>=8.0.0 \
+    ipywidgets>=8.0.0 
 
 # 新增这一行，用 conda 安装 nb_conda_kernels
 pip install --force-reinstall setuptools==69.0.2
@@ -74,7 +74,7 @@ pip install \
 pip install \
     torch>=2.0.0 \
     torchvision>=0.15.0 \
-    protobuf>=6.31.1,<8.0.0\
+    protobuf>=6.31.1,<8.0.0 \
     tensorflow>=2.15.0
 
 # LangChain 生态系统
@@ -84,7 +84,7 @@ pip install \
     langchain-community>=0.3.0 \
     langchain-openai>=0.2.0 \
     langchain-anthropic>=0.2.0 \
-    google-ai-generativelanguage>=0.7,<1\
+    google-ai-generativelanguage>=0.7,<1 \
     langchain-google-genai>=2.0.0 \
     langchain-ollama>=0.2.0
 
